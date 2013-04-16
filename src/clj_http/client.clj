@@ -144,6 +144,7 @@
         redirect (str (URL. (URL. url) raw-redirect))]
     ((wrap-redirects client) (-> req
                                  (dissoc :query-params)
+                                 (merge (parse-url redirect))
                                  (assoc :url redirect
                                         :trace-redirects trace-redirects)))))
 
